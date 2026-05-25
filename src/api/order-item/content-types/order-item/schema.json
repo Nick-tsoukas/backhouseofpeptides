@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_items",
+  "info": {
+    "singularName": "order-item",
+    "pluralName": "order-items",
+    "displayName": "OrderItem",
+    "description": "Individual items within an order"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "productNameSnapshot": {
+      "type": "string",
+      "required": true
+    },
+    "variantNameSnapshot": {
+      "type": "string",
+      "required": true
+    },
+    "skuSnapshot": {
+      "type": "string",
+      "required": true
+    },
+    "unitPriceSnapshot": {
+      "type": "decimal",
+      "required": true
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "orderItems"
+    }
+  }
+}

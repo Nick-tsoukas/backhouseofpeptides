@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": "Customer orders from Stripe checkout"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "stripeSessionId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "stripePaymentIntentId": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "amountSubtotal": {
+      "type": "decimal",
+      "required": true
+    },
+    "amountTotal": {
+      "type": "decimal",
+      "required": true
+    },
+    "shippingAmount": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "string",
+      "default": "usd"
+    },
+    "shippingName": {
+      "type": "string"
+    },
+    "shippingAddressLine1": {
+      "type": "string"
+    },
+    "shippingAddressLine2": {
+      "type": "string"
+    },
+    "shippingCity": {
+      "type": "string"
+    },
+    "shippingState": {
+      "type": "string"
+    },
+    "shippingPostalCode": {
+      "type": "string"
+    },
+    "shippingCountry": {
+      "type": "string"
+    },
+    "confirmationAccepted": {
+      "type": "boolean",
+      "default": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "paid", "failed", "refunded"],
+      "default": "pending"
+    },
+    "orderItems": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "order"
+    }
+  }
+}
