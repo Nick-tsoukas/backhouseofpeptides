@@ -747,15 +747,19 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     singularName: 'order';
     pluralName: 'orders';
     displayName: 'Order';
-    description: 'Customer orders from Stripe checkout';
+    description: 'Research order requests and fulfilled orders';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    stripeSessionId: Attribute.String & Attribute.Required & Attribute.Unique;
+    stripeSessionId: Attribute.String;
     stripePaymentIntentId: Attribute.String;
+    customerName: Attribute.String & Attribute.Required;
+    phone: Attribute.String;
+    companyName: Attribute.String;
     email: Attribute.Email & Attribute.Required;
+    customerNotes: Attribute.Text;
     amountSubtotal: Attribute.Decimal & Attribute.Required;
     amountTotal: Attribute.Decimal & Attribute.Required;
     shippingAmount: Attribute.Decimal;
@@ -766,10 +770,22 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     shippingCity: Attribute.String;
     shippingState: Attribute.String;
     shippingPostalCode: Attribute.String;
-    shippingCountry: Attribute.String;
-    confirmationAccepted: Attribute.Boolean & Attribute.DefaultTo<true>;
-    status: Attribute.Enumeration<['pending', 'paid', 'failed', 'refunded']> &
-      Attribute.DefaultTo<'pending'>;
+    shippingCountry: Attribute.String & Attribute.DefaultTo<'US'>;
+    confirmationAccepted: Attribute.Boolean & Attribute.DefaultTo<false>;
+    status: Attribute.Enumeration<
+      [
+        'pending_review',
+        'approved',
+        'rejected',
+        'awaiting_payment',
+        'fulfilled',
+        'cancelled'
+      ]
+    > &
+      Attribute.DefaultTo<'pending_review'>;
+    inventoryAdjusted: Attribute.Boolean & Attribute.DefaultTo<false>;
+    ownerNotes: Attribute.Text;
+    reviewedAt: Attribute.DateTime;
     orderItems: Attribute.Relation<
       'api::order.order',
       'oneToMany',
@@ -857,6 +873,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     active: Attribute.Boolean & Attribute.DefaultTo<true>;
     requiresConfirmation: Attribute.Boolean & Attribute.DefaultTo<true>;
     badgeText: Attribute.String & Attribute.DefaultTo<'Research Use Only'>;
+    image: Attribute.Media;
     variants: Attribute.Relation<
       'api::product.product',
       'oneToMany',

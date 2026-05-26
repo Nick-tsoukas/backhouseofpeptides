@@ -4,8 +4,13 @@ const https = require('https');
 const http = require('http');
 
 // Strapi API configuration
-const STRAPI_URL = 'http://localhost:1337';
-const STRAPI_TOKEN = 'b5a90d3392bc30881ecbe81c24d6214870dc0120714d0a0266a9e136c95564c95fcb85c9fc609a556f700900259463569e04a1308401f0deddf8b05b48c664db0db987e2a08b9e290ff8de85c89d86a7e7929e709905c9252920e3a7009316f4f488e1e6473ca3973d689258f76165e0b01a71a6431dee460881ed88511fc4c8';
+const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const STRAPI_TOKEN = process.env.STRAPI_TOKEN;
+
+if (!STRAPI_TOKEN) {
+  console.error('❌  STRAPI_TOKEN env var is required. Set it to a full-access API token from the Strapi admin.');
+  process.exit(1);
+}
 
 // Unsplash image URL (direct download link)
 const IMAGE_URL = 'https://images.unsplash.com/photo-1631390573032-e6a9a4b5e704?w=800&q=80';

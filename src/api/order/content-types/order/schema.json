@@ -5,7 +5,7 @@
     "singularName": "order",
     "pluralName": "orders",
     "displayName": "Order",
-    "description": "Customer orders from Stripe checkout"
+    "description": "Research order requests and fulfilled orders"
   },
   "options": {
     "draftAndPublish": false
@@ -13,16 +13,27 @@
   "pluginOptions": {},
   "attributes": {
     "stripeSessionId": {
-      "type": "string",
-      "required": true,
-      "unique": true
+      "type": "string"
     },
     "stripePaymentIntentId": {
+      "type": "string"
+    },
+    "customerName": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "companyName": {
       "type": "string"
     },
     "email": {
       "type": "email",
       "required": true
+    },
+    "customerNotes": {
+      "type": "text"
     },
     "amountSubtotal": {
       "type": "decimal",
@@ -58,16 +69,34 @@
       "type": "string"
     },
     "shippingCountry": {
-      "type": "string"
+      "type": "string",
+      "default": "US"
     },
     "confirmationAccepted": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "status": {
       "type": "enumeration",
-      "enum": ["pending", "paid", "failed", "refunded"],
-      "default": "pending"
+      "enum": [
+        "pending_review",
+        "approved",
+        "rejected",
+        "awaiting_payment",
+        "fulfilled",
+        "cancelled"
+      ],
+      "default": "pending_review"
+    },
+    "inventoryAdjusted": {
+      "type": "boolean",
+      "default": false
+    },
+    "ownerNotes": {
+      "type": "text"
+    },
+    "reviewedAt": {
+      "type": "datetime"
     },
     "orderItems": {
       "type": "relation",
