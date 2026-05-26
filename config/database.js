@@ -1,15 +1,29 @@
 const path = require('path');
 
-const isProd = process.env.NODE_ENV === 'production';
-
 module.exports = ({ env }) => {
-  if (isProd) {
+  const databaseUrl = env('DATABASE_URL', '');
+
+  if (databaseUrl) {
+    // Parse the URL so Knex gets explicit fields — avoids ENOTFOUND on Railway
+    let parsed;
+    try {
+      parsed = new URL(databaseUrl);
+    } catch (e) {
+      throw new Error(`DATABASE_URL is set but could not be parsed: ${e.message}`);
+    }
+
     return {
       connection: {
         client: 'postgres',
         connection: {
-          connectionString: env('DATABASE_URL'),
-          ssl: { rejectUnauthorized: false },
+          host: parsed.hostname,
+          port: parseInt(parsed.port || '5432', 10),
+          database: parsed.pathname.replace(/^\//, ''),
+          user: parsed.username,
+          password: parsed.password,
+          ssl: parsed.hostname.endsWith('.railway.internal')
+            ? false
+            : { rejectUnauthorized: false },
         },
         acquireConnectionTimeout: 60000,
       },
