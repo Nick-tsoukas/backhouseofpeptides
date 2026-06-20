@@ -48,7 +48,66 @@
     },
     "currency": {
       "type": "string",
-      "default": "usd"
+      "default": "USD"
+    },
+    "orderNumber": {
+      "type": "string",
+      "unique": true
+    },
+    "subtotalCents": {
+      "type": "integer",
+      "min": 0
+    },
+    "shippingCents": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "taxCents": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "totalCents": {
+      "type": "integer",
+      "min": 0
+    },
+    "paymentProvider": {
+      "type": "enumeration",
+      "enum": ["moov"],
+      "default": "moov"
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": ["card", "ach", "apple_pay"]
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "processing", "paid", "failed", "cancelled", "refunded"],
+      "default": "pending"
+    },
+    "moovCustomerAccountId": {
+      "type": "string"
+    },
+    "moovPaymentMethodId": {
+      "type": "string"
+    },
+    "moovTransferId": {
+      "type": "string"
+    },
+    "processedWebhookIds": {
+      "type": "json"
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "unique": true
+    },
+    "inventoryCommitted": {
+      "type": "boolean",
+      "default": false
+    },
+    "paidAt": {
+      "type": "datetime"
     },
     "shippingName": {
       "type": "string"
