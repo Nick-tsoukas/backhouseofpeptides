@@ -92,11 +92,105 @@
     "moovPaymentMethodId": {
       "type": "string"
     },
+    "moovCardId": {
+      "type": "string"
+    },
     "moovTransferId": {
       "type": "string"
     },
+    "moovCardLinkedAt": {
+      "type": "datetime"
+    },
+    "shippingFirstName": {
+      "type": "string"
+    },
+    "shippingLastName": {
+      "type": "string"
+    },
+    "shippingPhone": {
+      "type": "string"
+    },
+    "shippingAddress1": {
+      "type": "string"
+    },
+    "shippingAddress2": {
+      "type": "string"
+    },
+    "ageConfirmed": {
+      "type": "boolean",
+      "default": false
+    },
+    "researchUseConfirmed": {
+      "type": "boolean",
+      "default": false
+    },
+    "qualifiedPurchaserConfirmed": {
+      "type": "boolean",
+      "default": false
+    },
+    "termsAccepted": {
+      "type": "boolean",
+      "default": false
+    },
+    "verificationAcknowledged": {
+      "type": "boolean",
+      "default": false
+    },
+    "attestationsAcceptedAt": {
+      "type": "datetime"
+    },
+    "termsVersion": {
+      "type": "string"
+    },
+    "researchAttestationVersion": {
+      "type": "string"
+    },
+    "shippoAddressToId": {
+      "type": "string"
+    },
+    "shippoShipmentId": {
+      "type": "string"
+    },
+    "shippoRateId": {
+      "type": "string"
+    },
+    "shippingCarrier": {
+      "type": "string"
+    },
+    "shippingService": {
+      "type": "string"
+    },
+    "shippingDeliveryDays": {
+      "type": "integer"
+    },
+    "shippingCostCents": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "discountCents": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "shippingStatus": {
+      "type": "enumeration",
+      "enum": [
+        "not_quoted",
+        "quoted",
+        "selected",
+        "label_purchased",
+        "shipped",
+        "delivered",
+        "cancelled"
+      ],
+      "default": "not_quoted"
+    },
     "processedWebhookIds": {
       "type": "json"
+    },
+    "checkoutSessionTokenHash": {
+      "type": "string"
     },
     "idempotencyKey": {
       "type": "string",
