@@ -763,7 +763,102 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     amountSubtotal: Attribute.Decimal & Attribute.Required;
     amountTotal: Attribute.Decimal & Attribute.Required;
     shippingAmount: Attribute.Decimal;
-    currency: Attribute.String & Attribute.DefaultTo<'usd'>;
+    currency: Attribute.String & Attribute.DefaultTo<'USD'>;
+    orderNumber: Attribute.String & Attribute.Unique;
+    subtotalCents: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    shippingCents: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    taxCents: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    totalCents: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    paymentProvider: Attribute.Enumeration<['moov']> &
+      Attribute.DefaultTo<'moov'>;
+    paymentMethod: Attribute.Enumeration<['card', 'ach', 'apple_pay']>;
+    paymentStatus: Attribute.Enumeration<
+      ['pending', 'processing', 'paid', 'failed', 'cancelled', 'refunded']
+    > &
+      Attribute.DefaultTo<'pending'>;
+    moovCustomerAccountId: Attribute.String;
+    moovPaymentMethodId: Attribute.String;
+    moovCardId: Attribute.String;
+    moovTransferId: Attribute.String;
+    moovCardLinkedAt: Attribute.DateTime;
+    shippingFirstName: Attribute.String;
+    shippingLastName: Attribute.String;
+    shippingPhone: Attribute.String;
+    shippingAddress1: Attribute.String;
+    shippingAddress2: Attribute.String;
+    ageConfirmed: Attribute.Boolean & Attribute.DefaultTo<false>;
+    researchUseConfirmed: Attribute.Boolean & Attribute.DefaultTo<false>;
+    qualifiedPurchaserConfirmed: Attribute.Boolean & Attribute.DefaultTo<false>;
+    termsAccepted: Attribute.Boolean & Attribute.DefaultTo<false>;
+    verificationAcknowledged: Attribute.Boolean & Attribute.DefaultTo<false>;
+    attestationsAcceptedAt: Attribute.DateTime;
+    termsVersion: Attribute.String;
+    researchAttestationVersion: Attribute.String;
+    shippoAddressToId: Attribute.String;
+    shippoShipmentId: Attribute.String;
+    shippoRateId: Attribute.String;
+    shippingCarrier: Attribute.String;
+    shippingService: Attribute.String;
+    shippingDeliveryDays: Attribute.Integer;
+    shippingCostCents: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    discountCents: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    shippingStatus: Attribute.Enumeration<
+      [
+        'not_quoted',
+        'quoted',
+        'selected',
+        'label_purchased',
+        'shipped',
+        'delivered',
+        'cancelled'
+      ]
+    > &
+      Attribute.DefaultTo<'not_quoted'>;
+    processedWebhookIds: Attribute.JSON;
+    checkoutSessionTokenHash: Attribute.String;
+    idempotencyKey: Attribute.String & Attribute.Unique;
+    inventoryCommitted: Attribute.Boolean & Attribute.DefaultTo<false>;
+    paidAt: Attribute.DateTime;
     shippingName: Attribute.String;
     shippingAddressLine1: Attribute.String;
     shippingAddressLine2: Attribute.String;
@@ -824,6 +919,20 @@ export interface ApiOrderItemOrderItem extends Schema.CollectionType {
     variantNameSnapshot: Attribute.String & Attribute.Required;
     skuSnapshot: Attribute.String & Attribute.Required;
     unitPriceSnapshot: Attribute.Decimal & Attribute.Required;
+    unitPriceCents: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    lineTotalCents: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
     quantity: Attribute.Integer &
       Attribute.Required &
       Attribute.SetMinMax<
@@ -836,6 +945,16 @@ export interface ApiOrderItemOrderItem extends Schema.CollectionType {
       'api::order-item.order-item',
       'manyToOne',
       'api::order.order'
+    >;
+    product: Attribute.Relation<
+      'api::order-item.order-item',
+      'manyToOne',
+      'api::product.product'
+    >;
+    variant: Attribute.Relation<
+      'api::order-item.order-item',
+      'manyToOne',
+      'api::variant.variant'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
