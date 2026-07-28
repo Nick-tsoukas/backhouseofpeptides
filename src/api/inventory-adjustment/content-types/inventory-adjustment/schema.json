@@ -48,6 +48,9 @@
     "note": {
       "type": "text"
     },
+    "paymentMethod": {
+      "type": "string"
+    },
     "source": {
       "type": "enumeration",
       "enum": ["admin", "manual_sale", "online_order", "correction"],
