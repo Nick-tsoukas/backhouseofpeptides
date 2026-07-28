@@ -157,6 +157,46 @@
     "shippoRateId": {
       "type": "string"
     },
+    "shippoTransactionId": {
+      "type": "string"
+    },
+    "shippingLabelUrl": {
+      "type": "text"
+    },
+    "trackingNumber": {
+      "type": "string"
+    },
+    "trackingUrl": {
+      "type": "text"
+    },
+    "labelCostCents": {
+      "type": "integer",
+      "min": 0
+    },
+    "labelPurchasedAt": {
+      "type": "datetime"
+    },
+    "labelPrintedAt": {
+      "type": "datetime"
+    },
+    "trackingEmailSentAt": {
+      "type": "datetime"
+    },
+    "shippedAt": {
+      "type": "datetime"
+    },
+    "labelErrorMessage": {
+      "type": "text"
+    },
+    "trackingStatus": {
+      "type": "string"
+    },
+    "trackingStatusUpdatedAt": {
+      "type": "datetime"
+    },
+    "deliveredAt": {
+      "type": "datetime"
+    },
     "shippingCarrier": {
       "type": "string"
     },
@@ -182,9 +222,15 @@
         "not_quoted",
         "quoted",
         "selected",
+        "ready_to_ship",
+        "label_purchasing",
         "label_purchased",
         "shipped",
+        "in_transit",
         "delivered",
+        "exception",
+        "label_failed",
+        "not_required",
         "cancelled"
       ],
       "default": "not_quoted"
