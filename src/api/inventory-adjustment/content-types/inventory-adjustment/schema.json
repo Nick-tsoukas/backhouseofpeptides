@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inventory_adjustments",
+  "info": {
+    "singularName": "inventory-adjustment",
+    "pluralName": "inventory-adjustments",
+    "displayName": "Inventory Adjustment",
+    "description": "Audit log for inventory changes"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "variant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::variant.variant"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product"
+    },
+    "adjustmentType": {
+      "type": "enumeration",
+      "enum": ["add", "remove", "set"],
+      "required": true
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "previousInventory": {
+      "type": "integer",
+      "required": true
+    },
+    "newInventory": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "reason": {
+      "type": "string",
+      "required": true
+    },
+    "note": {
+      "type": "text"
+    },
+    "source": {
+      "type": "enumeration",
+      "enum": ["admin", "manual_sale", "online_order", "correction"],
+      "required": true,
+      "default": "admin"
+    },
+    "relatedOrder": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order"
+    },
+    "createdByAdmin": {
+      "type": "string"
+    }
+  }
+}

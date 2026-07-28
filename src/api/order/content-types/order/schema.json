@@ -74,12 +74,12 @@
     },
     "paymentProvider": {
       "type": "enumeration",
-      "enum": ["moov"],
+      "enum": ["moov", "manual"],
       "default": "moov"
     },
     "paymentMethod": {
       "type": "enumeration",
-      "enum": ["card", "ach", "apple_pay"]
+      "enum": ["card", "ach", "apple_pay", "cash", "external", "other"]
     },
     "paymentStatus": {
       "type": "enumeration",
