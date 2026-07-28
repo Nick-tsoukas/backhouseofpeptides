@@ -101,6 +101,9 @@
     "moovCardLinkedAt": {
       "type": "datetime"
     },
+    "paymentInitiatedAt": {
+      "type": "datetime"
+    },
     "shippingFirstName": {
       "type": "string"
     },
