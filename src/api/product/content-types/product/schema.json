@@ -45,6 +45,14 @@
       "required": false,
       "allowedTypes": ["images"]
     },
+    "generatedImageUrl": {
+      "type": "string"
+    },
+    "imageSource": {
+      "type": "enumeration",
+      "enum": ["uploaded", "generated", "placeholder"],
+      "default": "placeholder"
+    },
     "variants": {
       "type": "relation",
       "relation": "oneToMany",
