@@ -1,6 +1,7 @@
 'use strict';
 
 // Content-type actions the public (unauthenticated) storefront must be able to read.
+// Store Settings are NOT public — the Nuxt BFF reads them with STRAPI_TOKEN only.
 const PUBLIC_READ_ACTIONS = [
   'api::product.product.find',
   'api::product.product.findOne',

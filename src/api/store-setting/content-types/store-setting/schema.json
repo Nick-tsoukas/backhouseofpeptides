@@ -1,0 +1,142 @@
+{
+  "kind": "singleType",
+  "collectionName": "store_settings",
+  "info": {
+    "singularName": "store-setting",
+    "pluralName": "store-settings",
+    "displayName": "Store Settings",
+    "description": "Global store identity, ship-from, shipping defaults, and legal/policy content"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "storeName": {
+      "type": "string",
+      "default": "Quantum Bio Peptides"
+    },
+    "legalBusinessName": {
+      "type": "string"
+    },
+    "dbaName": {
+      "type": "string"
+    },
+    "supportEmail": {
+      "type": "email"
+    },
+    "supportPhone": {
+      "type": "string"
+    },
+    "websiteUrl": {
+      "type": "string"
+    },
+    "businessAddressLine1": {
+      "type": "string"
+    },
+    "businessAddressLine2": {
+      "type": "string"
+    },
+    "businessCity": {
+      "type": "string"
+    },
+    "businessState": {
+      "type": "string"
+    },
+    "businessPostalCode": {
+      "type": "string"
+    },
+    "businessCountry": {
+      "type": "string",
+      "default": "US"
+    },
+    "shipFromName": {
+      "type": "string"
+    },
+    "shipFromCompany": {
+      "type": "string"
+    },
+    "shipFromAddressLine1": {
+      "type": "string"
+    },
+    "shipFromAddressLine2": {
+      "type": "string"
+    },
+    "shipFromCity": {
+      "type": "string"
+    },
+    "shipFromState": {
+      "type": "string"
+    },
+    "shipFromPostalCode": {
+      "type": "string"
+    },
+    "shipFromCountry": {
+      "type": "string",
+      "default": "US"
+    },
+    "shipFromPhone": {
+      "type": "string"
+    },
+    "shipFromEmail": {
+      "type": "email"
+    },
+    "allowedCarriers": {
+      "type": "string",
+      "default": "USPS"
+    },
+    "defaultPackageLengthIn": {
+      "type": "decimal"
+    },
+    "defaultPackageWidthIn": {
+      "type": "decimal"
+    },
+    "defaultPackageHeightIn": {
+      "type": "decimal"
+    },
+    "defaultPackageWeightOz": {
+      "type": "decimal"
+    },
+    "freeShippingEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "orderSupportMessage": {
+      "type": "text"
+    },
+    "termsOfService": {
+      "type": "richtext"
+    },
+    "privacyPolicy": {
+      "type": "richtext"
+    },
+    "shippingPolicy": {
+      "type": "richtext"
+    },
+    "refundPolicy": {
+      "type": "richtext"
+    },
+    "researchUseOnlyPolicy": {
+      "type": "richtext"
+    },
+    "contactPolicy": {
+      "type": "richtext"
+    },
+    "footerDisclaimer": {
+      "type": "text"
+    },
+    "researchUseOnlyShortDisclaimer": {
+      "type": "text"
+    },
+    "socialLinks": {
+      "type": "json"
+    },
+    "announcementBanner": {
+      "type": "string"
+    },
+    "announcementBannerEnabled": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
