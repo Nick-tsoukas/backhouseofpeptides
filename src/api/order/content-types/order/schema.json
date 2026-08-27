@@ -300,6 +300,19 @@
     "paidAt": {
       "type": "datetime"
     },
+    "paymentFinalizingAt": {
+      "type": "datetime"
+    },
+    "paidReceiptSentAt": {
+      "type": "datetime"
+    },
+    "needsAttention": {
+      "type": "boolean",
+      "default": false
+    },
+    "needsAttentionReason": {
+      "type": "text"
+    },
     "shippingName": {
       "type": "string"
     },
