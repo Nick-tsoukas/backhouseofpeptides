@@ -74,8 +74,12 @@
     },
     "paymentProvider": {
       "type": "enumeration",
-      "enum": ["moov", "manual"],
+      "enum": ["moov", "cashapp", "zelle", "manual"],
       "default": "moov"
+    },
+    "manualPaymentMethod": {
+      "type": "enumeration",
+      "enum": ["cashapp", "zelle"]
     },
     "paymentMethod": {
       "type": "enumeration",
@@ -83,8 +87,52 @@
     },
     "paymentStatus": {
       "type": "enumeration",
-      "enum": ["pending", "processing", "paid", "failed", "cancelled", "refunded"],
+      "enum": [
+        "pending",
+        "processing",
+        "awaiting_manual_payment",
+        "payment_claimed_by_customer",
+        "manual_review",
+        "paid",
+        "manual_payment_rejected",
+        "failed",
+        "cancelled",
+        "refunded"
+      ],
       "default": "pending"
+    },
+    "manualPaymentReference": {
+      "type": "string"
+    },
+    "manualPaymentInstructionsSentAt": {
+      "type": "datetime"
+    },
+    "manualPaymentExpiresAt": {
+      "type": "datetime"
+    },
+    "customerPaymentClaimedAt": {
+      "type": "datetime"
+    },
+    "customerPaymentSenderName": {
+      "type": "string"
+    },
+    "customerPaymentSenderHandle": {
+      "type": "string"
+    },
+    "customerPaymentNote": {
+      "type": "text"
+    },
+    "manualPaymentVerifiedAt": {
+      "type": "datetime"
+    },
+    "manualPaymentVerifiedBy": {
+      "type": "string"
+    },
+    "manualPaymentRejectedAt": {
+      "type": "datetime"
+    },
+    "manualPaymentRejectionReason": {
+      "type": "text"
     },
     "moovCustomerAccountId": {
       "type": "string"
@@ -285,6 +333,8 @@
         "approved",
         "rejected",
         "awaiting_payment",
+        "awaiting_manual_payment",
+        "paid",
         "fulfilled",
         "cancelled"
       ],
