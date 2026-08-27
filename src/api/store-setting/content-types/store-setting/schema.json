@@ -137,6 +137,57 @@
     "announcementBannerEnabled": {
       "type": "boolean",
       "default": false
+    },
+    "paymentMode": {
+      "type": "enumeration",
+      "enum": ["moov", "cashapp_manual", "manual_multi", "disabled"],
+      "default": "moov"
+    },
+    "cashAppEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "cashAppCashtag": {
+      "type": "string"
+    },
+    "cashAppDisplayName": {
+      "type": "string"
+    },
+    "cashAppPaymentUrl": {
+      "type": "string"
+    },
+    "cashAppQrImageUrl": {
+      "type": "text"
+    },
+    "cashAppInstructions": {
+      "type": "text"
+    },
+    "manualPaymentExpirationHours": {
+      "type": "integer",
+      "min": 1,
+      "default": 24
+    },
+    "manualPaymentSupportEmail": {
+      "type": "email"
+    },
+    "zelleEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "zelleDisplayName": {
+      "type": "string"
+    },
+    "zelleEmail": {
+      "type": "email"
+    },
+    "zellePhone": {
+      "type": "string"
+    },
+    "zelleInstructions": {
+      "type": "text"
+    },
+    "zelleQrImageUrl": {
+      "type": "text"
     }
   }
 }
