@@ -74,7 +74,7 @@
     },
     "paymentProvider": {
       "type": "enumeration",
-      "enum": ["moov", "cashapp", "zelle", "manual"],
+      "enum": ["moov", "manual", "cashapp_manual", "cashapp", "zelle"],
       "default": "moov"
     },
     "manualPaymentMethod": {
@@ -83,7 +83,7 @@
     },
     "paymentMethod": {
       "type": "enumeration",
-      "enum": ["card", "ach", "apple_pay", "cash", "external", "other"]
+      "enum": ["card", "ach", "apple_pay", "cash", "external", "other", "cashapp"]
     },
     "paymentStatus": {
       "type": "enumeration",
@@ -127,6 +127,24 @@
     },
     "manualPaymentVerifiedBy": {
       "type": "string"
+    },
+    "paymentFinalizingAt": {
+      "type": "datetime"
+    },
+    "paidReceiptSentAt": {
+      "type": "datetime"
+    },
+    "manualPaymentClaimedAt": {
+      "type": "datetime"
+    },
+    "manualPaymentClaimedSenderName": {
+      "type": "string"
+    },
+    "manualPaymentClaimedHandle": {
+      "type": "string"
+    },
+    "manualPaymentClaimedNote": {
+      "type": "text"
     },
     "manualPaymentRejectedAt": {
       "type": "datetime"

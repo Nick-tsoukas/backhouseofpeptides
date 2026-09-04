@@ -140,12 +140,12 @@
     },
     "paymentMode": {
       "type": "enumeration",
-      "enum": ["moov", "cashapp_manual", "manual_multi", "disabled"],
-      "default": "moov"
+      "enum": ["cashapp_manual", "moov", "manual_multi", "disabled"],
+      "default": "cashapp_manual"
     },
     "cashAppEnabled": {
       "type": "boolean",
-      "default": false
+      "default": true
     },
     "cashAppCashtag": {
       "type": "string"
@@ -164,8 +164,8 @@
     },
     "manualPaymentExpirationHours": {
       "type": "integer",
-      "min": 1,
-      "default": 24
+      "default": 48,
+      "min": 1
     },
     "manualPaymentSupportEmail": {
       "type": "email"
@@ -173,6 +173,9 @@
     "zelleEnabled": {
       "type": "boolean",
       "default": false
+    },
+    "zelleHandle": {
+      "type": "string"
     },
     "zelleDisplayName": {
       "type": "string"
