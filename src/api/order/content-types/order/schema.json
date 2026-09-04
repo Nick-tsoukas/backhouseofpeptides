@@ -251,6 +251,14 @@
     "shippedAt": {
       "type": "datetime"
     },
+    "fulfillmentMethod": {
+      "type": "enumeration",
+      "enum": ["shippo_label", "manual_label", "none"],
+      "default": "none"
+    },
+    "manualTrackingAddedAt": {
+      "type": "datetime"
+    },
     "labelErrorMessage": {
       "type": "text"
     },
@@ -291,6 +299,7 @@
         "ready_to_ship",
         "label_purchasing",
         "label_purchased",
+        "manual_tracking_added",
         "shipped",
         "in_transit",
         "delivered",
